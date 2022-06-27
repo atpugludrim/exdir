@@ -1,0 +1,111 @@
+% Created 2022-05-12 Thu 21:12
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\newcommand{\qed}{\mbox{}\hspace*{\fill}\nolinebreak\mbox{$\rule{0.6em}{0.6em}$}}
+\date{\today}
+\title{What is it like to go somewhere for all of eternity?}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={What is it like to go somewhere for all of eternity?},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\section{A problem}
+Say you did some bad things in life and go to hell. The devil there devices a
+punishment for you, asking you to walk from a mountain to a river where you can
+drink water. But the real punishment is that when you are about to reach the
+river, when only \(10\%\) of the total distance is left the devil makes your
+feet 10\(\times\) slower. And this process keeps repeating, so that when you are
+just \(10\%\) of remaining distance away from the river, you are slowed
+10\(\times\) from the current speed. Will you ever reach the river?
+\par
+Let's say distance from mountain to river is \(d\). Speed at start is \(v\),
+time taken to reach \(90\%\) of the distance is \(t\). So, when you reach
+\(0.9d\), speed becomes \(\frac{v}{10}\). In next \(t\) time you travel
+\(\frac{v\times t}{10}=\frac{0.9d}{10}\) which is \(90\%\) of the rest (\(90\%
+\text{ of }d(1-0.9)=d(0.1)=d(0.09)\)). In fact, after \(nt\) time, you travel
+\(\frac{0.9d}{10^{n-1}}=\frac{9d}{10^n}\) more of the distance towards the river.
+\[\text{total distance travelled, }t_n=\sum^n_{i=1}\frac{9d}{10^i}\]
+
+\section{Well what now?}
+What is \(\displaystyle\lim_{n\rightarrow\infty}t_n\)? Well let's define \(d=1\)
+and define the sequence \(t_n, n\in\{1,2,\dotsc\}\) alternatively. We can see
+that the \(t_n\) can be written as \(0.999\dotsm \text{n times}\). Let's define
+\(r_n=1-t_n=\frac{1}{10^n}\). Let's define \(m=\frac{t_n+1}{2}\) and notice that
+\(t_n\le m\le 1\).
+\begin{align*}
+    t_n&\le m\le 1\\
+    \Rightarrow -t_n &\ge -m \ge -1 \\
+    \Rightarrow 1-t_n&\ge 1-m \ge 0\\
+    \Rightarrow r_n&\ge 1-m \ge 0 \\
+    \Rightarrow \frac{1}{10^n}&\ge 1-m\ge 0
+\end{align*}
+As \(n\rightarrow\infty\), \(1-m\) gets sandwiched between 0 and 0. Thus at the
+limit, \(1-m=0\) which means \(m=1\) which means \(\frac{t_n+1}{2}=1\Rightarrow
+t_n+1=2\Rightarrow t_n=1\).\qed\par
+Which means, once the eternity is over you'll be able to reach the river, drink
+the water and start a new life at the birth of the new universe.
+
+\section{Alternate proof?}
+Given a positive number \(\varepsilon >0\), we want to find an integer
+\(N_0(\varepsilon)\) such that \hbox{\(\forall\; n\ge N_0(\varepsilon), \lvert
+t_n-1\rvert <\varepsilon\)}.
+\begin{align*}
+    &\lvert t_{N_0}-1\rvert < \varepsilon\\
+    &\lvert 1-r_{N_0}-1\rvert < \varepsilon\\
+    &\lvert r_{N_0}\rvert < \varepsilon\\
+    &\left\lvert \frac{1}{10^{N_0}} \right\rvert< \varepsilon\\
+    &\frac{1}{10^{N_0}} < \varepsilon\quad\text{\small since it's always
+    positive}\\
+    &10^{N_0}>\frac{1}{\varepsilon}\\
+    &\Rightarrow N_0 > \log_{10}\left(\frac{1}{\varepsilon}\right)\quad\text{\small because log is an
+    increasing function}
+\end{align*}
+Thus choosing \(N_0=\max\{0,\lceil\log_{10}\frac{1}{\varepsilon}\rceil+1\}\) does the
+job.\qed\par
+This says that we can get arbitrarily close (\(\varepsilon>0\)) to 1 and there
+will be an infinitely many points of the sequence within that
+\(\varepsilon\)-ball. This is the definition of convergence of a sequence to a
+point, or the definition of existence of a limit. This proves that
+\(0.\bar{9}=1\).
+
+\section{What about geometric progression?}
+\(S_n=\frac{a(1-r^n)}{1-r}\). Identifying \(a=\frac{9}{10}\) and
+\(r=\frac{1}{10}\), \(\displaystyle S_n=\frac{9}{10}\frac{1-\frac{1}{10^n}}{1-\frac{1}{10}}\)
+and
+\(\displaystyle\lim_{n\rightarrow\infty}S_n=\frac{\frac{9}{10}}{1-\frac{1}{10}}=1\).
+
+\section{Why the hell did I make this?}
+Because in school we did a math problem where we proved that \(0.\bar{9}=1\) but
+it was wrong, because it can not be algebraically multiplied out. Instead, it's a
+``limit'' of a sequence. Which is why in all my previous ways of getting to 1, I
+use limits. Just saying \(0.\bar{9}=x\), \(9.\bar{9}=10x\), \(9=9x\), \(x=1\) is
+wrong. The addition, multiplication, subtraction and division used here are not
+defined. High school math is much more difficult than we think. \par
+This is the sin you committed because of which you in hell. You're a very bad
+man like Jerry.\par
+And this is not
+the end of the story, what does the norm \(\lvert\cdot\rvert\) mean. How do we
+know that at the limit, the sum of a GP is actually \(\frac{a}{1-r}\) for
+\(r<1\). We need to define metrics, look at convergence, Cauchy sequences and
+much more to complete the proof.
+
+\end{document}

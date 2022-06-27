@@ -1,0 +1,18 @@
+\documentclass{article}
+\usepackage[a4paper,margin=0.5in,]{geometry}
+\usepackage{fancyvrb}
+\usepackage{fontenc}
+\newcommand\customfont[1]{{\usefont{T1}{custom}{m}{n} #1}}
+\begin{document}
+\pagestyle{empty}
+\vbox to 0.1\vsize{\vfil}
+% https://web.archive.org/web/20170302151019/http://math.stanford.edu/~jyzhao/latexfonts.php
+% 1) Find the ttf font using ``fc-list''
+% 2) Copy to folder containing tex file rename to custom.ttf
+% 3) Must have T1-WGL.enc and t1custom.fd
+% 4) Run: ``ttf2tfm custom.ttf -p T1-WGL4.enc''
+% 5) In tex define the newcommand as above and use \customfont. Or use fontfamily=custom as in VerbatimInput
+% 6) Play around with the font size and baseline stretch
+{\hfil\fontsize{6}{7}\customfont{\VerbatimInput[fontfamily=custom,baselinestretch=1.05]{linkedin.txt}}\hfil}\par
+\hfill \customfont{MG}
+\end{document}
