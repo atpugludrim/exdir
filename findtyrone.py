@@ -40,7 +40,7 @@ def nmap_scanner(hosts, a, min_, tried):
         tried[host - min_] = 1
         process = subprocess.Popen(f"nmap -sV -Pn -p 22 {ip}".split(),stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         try:
-            process.wait(timeout=2)
+            process.wait(timeout=5)
         except subprocess.TimeoutExpired:
             process.kill()
             out,err = process.communicate()
