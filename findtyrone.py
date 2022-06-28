@@ -31,7 +31,7 @@ def ordinary_scanner(hosts, a, min_, tried):
                 a[host - min_] = 1
 
 def nmap_scanner(hosts, a, min_, tried):
-    pattern = re.compile(r"22/tcp.*open.*ssh")
+    pattern = re.compile(r"22/tcp.*open.*(?:ssh|tcpwrapped)")
     host_pattern = re.compile(r"\d+\.\d+\.\d+\.(\d+)")
     for ip in hosts:
         #print(f"At {host}")
@@ -40,7 +40,7 @@ def nmap_scanner(hosts, a, min_, tried):
         tried[host - min_] = 1
         process = subprocess.Popen(f"nmap -sV -Pn -p 22 {ip}".split(),stdout = subprocess.PIPE, stderr = subprocess.PIPE)
         try:
-            process.wait(timeout=5)
+            process.wait(timeout=10)
         except subprocess.TimeoutExpired:
             process.kill()
             out,err = process.communicate()
