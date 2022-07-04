@@ -1,0 +1,6 @@
+From Siddharth:
+1) ai paper deadlines - website
+2) core rankings - website
+3) conference process - i) submit paper ii) rebuttal iii) camera ready (no technical changes, add acknowdledgement, change format, etc.) iv) present (make connections like an extrovert)
+
+4) run code on multiple gpus using nn.DataParallel. Changes required: i) import os ii) os.environ['CUDA_VISIBLE_DEVICES'] = '1,2,3' iii) model = nn.DataParallel(model)

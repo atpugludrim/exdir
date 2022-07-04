@@ -1,0 +1,101 @@
+$ python3 constrained_coinchange.py -h
+usage: constrained_coinchange.py [-h] [--sumto SUMTO]
+                                 [--n-coins-allowed N_COINS_ALLOWED]
+                                 [--coin-denominations COIN_DENOMINATIONS [COIN_DENOMINATIONS ...]]
+
+options:
+  -h, --help            show this help message and exit
+  --sumto SUMTO
+  --n-coins-allowed N_COINS_ALLOWED, -nca N_COINS_ALLOWED
+  --coin-denominations COIN_DENOMINATIONS [COIN_DENOMINATIONS ...], -cd COIN_DENOMINATIONS [COIN_DENOMINATIONS ...]
+$ python3 constrained_coinchange.py --sumto 12 -nca 7 -cd 1 2
+   H,    H,    W,    W,    W,    W,    W
+   H,    W,    H,    W,    W,    W,    W
+   H,    W,    W,    H,    W,    W,    W
+   H,    W,    W,    W,    H,    W,    W
+   H,    W,    W,    W,    W,    H,    W
+   H,    W,    W,    W,    W,    W,    H
+   W,    H,    H,    W,    W,    W,    W
+   W,    H,    W,    H,    W,    W,    W
+   W,    H,    W,    W,    H,    W,    W
+   W,    H,    W,    W,    W,    H,    W
+   W,    H,    W,    W,    W,    W,    H
+   W,    W,    H,    H,    W,    W,    W
+   W,    W,    H,    W,    H,    W,    W
+   W,    W,    H,    W,    W,    H,    W
+   W,    W,    H,    W,    W,    W,    H
+   W,    W,    W,    H,    H,    W,    W
+   W,    W,    W,    H,    W,    H,    W
+   W,    W,    W,    H,    W,    W,    H
+   W,    W,    W,    W,    H,    H,    W
+   W,    W,    W,    W,    H,    W,    H
+   W,    W,    W,    W,    W,    H,    H
+Found 21 patterns
+$ python3 constrained_coinchange.py --sumto 12 -nca 5 -cd 1 2 3
+   H,    W, 3/2W, 3/2W, 3/2W
+   H, 3/2W,    W, 3/2W, 3/2W
+   H, 3/2W, 3/2W,    W, 3/2W
+   H, 3/2W, 3/2W, 3/2W,    W
+   W,    H, 3/2W, 3/2W, 3/2W
+   W,    W,    W, 3/2W, 3/2W
+   W,    W, 3/2W,    W, 3/2W
+   W,    W, 3/2W, 3/2W,    W
+   W, 3/2W,    H, 3/2W, 3/2W
+   W, 3/2W,    W,    W, 3/2W
+   W, 3/2W,    W, 3/2W,    W
+   W, 3/2W, 3/2W,    H, 3/2W
+   W, 3/2W, 3/2W,    W,    W
+   W, 3/2W, 3/2W, 3/2W,    H
+3/2W,    H,    W, 3/2W, 3/2W
+3/2W,    H, 3/2W,    W, 3/2W
+3/2W,    H, 3/2W, 3/2W,    W
+3/2W,    W,    H, 3/2W, 3/2W
+3/2W,    W,    W,    W, 3/2W
+3/2W,    W,    W, 3/2W,    W
+3/2W,    W, 3/2W,    H, 3/2W
+3/2W,    W, 3/2W,    W,    W
+3/2W,    W, 3/2W, 3/2W,    H
+3/2W, 3/2W,    H,    W, 3/2W
+3/2W, 3/2W,    H, 3/2W,    W
+3/2W, 3/2W,    W,    H, 3/2W
+3/2W, 3/2W,    W,    W,    W
+3/2W, 3/2W,    W, 3/2W,    H
+3/2W, 3/2W, 3/2W,    H,    W
+3/2W, 3/2W, 3/2W,    W,    H
+Found 30 patterns
+$ python3 constrained_coinchange.py --sumto 12 -nca 5 -cd 2 3
+   W,    W,    W, 3/2W, 3/2W
+   W,    W, 3/2W,    W, 3/2W
+   W,    W, 3/2W, 3/2W,    W
+   W, 3/2W,    W,    W, 3/2W
+   W, 3/2W,    W, 3/2W,    W
+   W, 3/2W, 3/2W,    W,    W
+3/2W,    W,    W,    W, 3/2W
+3/2W,    W,    W, 3/2W,    W
+3/2W,    W, 3/2W,    W,    W
+3/2W, 3/2W,    W,    W,    W
+Found 10 patterns
+$ python3 constrained_coinchange.py --sumto 12 -nca 5 -cd 2 3 4
+   W,    W,    W,    W,   2W
+   W,    W,    W, 3/2W, 3/2W
+   W,    W,    W,   2W,    W
+   W,    W, 3/2W,    W, 3/2W
+   W,    W, 3/2W, 3/2W,    W
+   W,    W,   2W,    W,    W
+   W, 3/2W,    W,    W, 3/2W
+   W, 3/2W,    W, 3/2W,    W
+   W, 3/2W, 3/2W,    W,    W
+   W,   2W,    W,    W,    W
+3/2W,    W,    W,    W, 3/2W
+3/2W,    W,    W, 3/2W,    W
+3/2W,    W, 3/2W,    W,    W
+3/2W, 3/2W,    W,    W,    W
+  2W,    W,    W,    W,    W
+Found 15 patterns
+$ python3 constrained_coinchange.py --sumto 12 -nca 5 -cd 2 4
+   W,    W,    W,    W,   2W
+   W,    W,    W,   2W,    W
+   W,    W,   2W,    W,    W
+   W,   2W,    W,    W,    W
+  2W,    W,    W,    W,    W
+Found 5 patterns
