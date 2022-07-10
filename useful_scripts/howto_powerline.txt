@@ -2,3 +2,5 @@ install powerline-shell from pip
 there are two ways to work with powerline fonts, check the powerline fonts github and documentation
 
 for so long the default method wasn't working for hyper. So, I had to figure out the other method.
+check if any powerline fonts are present in "fc-list | grep -i powerline". If only PowelineSymbols.otf
+then it's the method that doesn't use patched fonts. Which works with Guake, but not hyper.
