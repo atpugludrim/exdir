@@ -1,0 +1,3 @@
+fdisk -l to find your device, also there's a method using LSBLK but I forgot that
+next, create a mount point. then mount using $ sudo mount /dev/sdb2 /mnt/point
+check man mount, man lsblk, man blkid
