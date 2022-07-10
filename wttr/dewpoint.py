@@ -31,7 +31,8 @@ def dewpoint(T,RH):
         return Td
 
 def main():
-    locations = {'28.5382306,77.1982495':'New Delhi','Durg':'Durg','Raipur':'Raipur','12.9128499,77.6765519':'Banglore'}
+    #locations = {'28.5382306,77.1982495':'New Delhi','Durg':'Durg','Raipur':'Raipur','12.9128499,77.6765519':'Banglore'}
+    locations = {'28.5382306,77.1982495':'New Delhi','Durg':'Durg','Raipur':'Raipur','Bengaluru':'Banglore'}
     for loc, name in locations.items():
         wr = weather_report(location={loc:name})
         print(wr[0],end='')

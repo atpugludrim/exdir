@@ -1,0 +1,4 @@
+install powerline-shell from pip
+there are two ways to work with powerline fonts, check the powerline fonts github and documentation
+
+for so long the default method wasn't working for hyper. So, I had to figure out the other method.
