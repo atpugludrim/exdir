@@ -1,0 +1,4 @@
+install xautolock, put that in xsession or xinitrc and config it
+to start physlock.
+for lock on lid close, create a systemd service (check arch posts
+and stackoverflow on this.) And then systemctl enable the service
