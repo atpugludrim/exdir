@@ -9,8 +9,8 @@ class Failure:
         try:
             val = f(this.value)
             return Failure(val)
-        except Exception as e:
-            return Failure(None, True, e)
+        except BaseException as e:
+            return Failure(None, True, "{}: {}".format(type(e).__name__,e))
     def __repr__(this):
         return f" {this.value} failed: {this.failed} exc: {this.exc}"
 
