@@ -1,0 +1,5 @@
+There's ```$ nm-connection-editor``` and ```$ nm-applet```
+and ```$ nmcli``` and ```$ nmtui```
+
+For help with nmcli check this on arch wiki:
+https://wiki.archlinux.org/title/NetworkManager
