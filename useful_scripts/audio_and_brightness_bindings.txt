@@ -1,0 +1,6 @@
+qtile has special keys XF86BrightnessUp, XF86AudioRaiseVolume, XF86AudioMute, etc
+
+bind the audio ones to $ pactl set-sink-volume 0 "+5%" (or -5%)
+and $ pactl set-sink-mute 0 toggle
+
+and bind brightness to $ lxqt-config-brightness -i for increase and -d for decrease
