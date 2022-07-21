@@ -8,7 +8,7 @@ sed is amazing at processing large text files (like I'd encounter in my ML resul
 Useful commands:
 
 $ sed '/pattern/!d;=' <filename> | paste - -
-comments: grep, but faster
+comments: grep, but faster :update: actually grep is faster
 $ sed '1050,1060p' <filename> | less
 comments: print only selected lines
 tips: place markers in output file using print/logging script and then using grep find
