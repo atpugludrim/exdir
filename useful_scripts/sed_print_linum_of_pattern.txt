@@ -9,7 +9,7 @@ Useful commands:
 
 $ sed '/pattern/!d;=' <filename> | paste - -
 comments: grep, but faster :update: actually grep is faster
-$ sed '1050,1060p' <filename> | less
+$ sed -n '1050,1060p' <filename> | less
 comments: print only selected lines
 tips: place markers in output file using print/logging script and then using grep find
 line number, then using the second command print only that segment
