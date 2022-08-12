@@ -1,0 +1,17 @@
+1. readelf -h exefile
+2. readelf -l exefile
+3. readelf -x .rodata exefile
+4. objdump -s -j .rodata exefile
+5. objdump -S exefile
+6. objdump -d exefile
+7. g++ -S src.cpp / gcc -S src.c
+   to emit ASM from LLVM
+8. find out about yasm, nasm and as
+   as -o hello.o hello.c
+   ld -s -o hello hello.o
+9. the ld code won't work when linking with
+   libraries like stdc++, so figure out what
+   g++ does by typing g++ -v -o tmp hello.o
+   it'll show a linking line (using collect2)
+   and that line will contain path of all the
+   libraries and required commands. Use the command.

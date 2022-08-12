@@ -1,0 +1,13 @@
+What I need in any of my server/machine?
+
+1. vim
+2. python (or perhaps anaconda/miniconda)
+3. if it's my machine then qtile
+4. configure vim bindings for tmux
+5. configure vimrc
+6. powerline shell (b-ryan, pip)
+7. powerline for vim (pip install)
+8. modded gruvbox theme for powerline
+9. latex
+10. emacs for org-mode
+11. hyper? with gruvbox theme
