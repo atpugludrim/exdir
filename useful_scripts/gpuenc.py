@@ -11,6 +11,6 @@ for f in files:
         container = f[idx:]
         name = f[:idx]
         of = name + "_enc" + container
-    runcmd = "ffmpeg -i {} -cq 32 -tune hq -c:v h264_nvenc -preset slow {}"\
+    runcmd = "ffmpeg -i \"{}\" -cq 35 -tune hq -c:v h264_nvenc -preset slow \"{}\""\
             .format(f, of)
     os.system(runcmd)
