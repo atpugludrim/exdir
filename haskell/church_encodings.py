@@ -76,6 +76,10 @@ def main():
     succ   = lambda n: lambda f: lambda a: f(n(f)(a))
     n1     = succ(n0)
     n2     = succ(n1)
+    fst    = lambda p: p(K)
+    snd    = lambda p: p(KI)
+    op     = lambda p: V(snd(p))(succ(snd(p)))
+    pred   = lambda n: fst(n(op)(V(I)(n0)))
     add    = lambda n: lambda m: n(succ)(m)
     mult   = B
     power  = lambda n: lambda m: m(n)
