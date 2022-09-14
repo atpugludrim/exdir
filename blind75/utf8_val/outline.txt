@@ -1,0 +1,10 @@
+f1: first byte to expected number of bytes
+f2: number of bytes to as many internal byte checks
+f3: internal byte check
+
+for 1 byte case: max byte value is 127, min is 0
+for 2 byte case: max is 223, min is 192
+for 3 byte case: min is 224, max is 239
+for 4 byte case: max is 247, min is 240
+
+for internal bytes: max is 191, min is 128
