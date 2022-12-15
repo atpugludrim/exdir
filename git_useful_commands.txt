@@ -1,0 +1,9 @@
+git rev-list --objects --all | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | sed -n 's/^blob //p' | sort -n -k 2 | cut -c 1-12,41- | numfmt --field=2 --to=si --suffix=B --padding=7 --round=nearest
+
+git log -p -- <path_to_file>
+^generates a diff patch to show whatchanged
+
+git diff HEAD~1 HEAD -- <path_to_file>
+^diffs version of file in head and one commit before head
+git diff HEAD -- <path_to_file>
+^diffs current version and the last committed version
