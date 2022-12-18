@@ -1,0 +1,3 @@
+Use monotonic stack.
+
+Didn't know. Didn't complete implementation. But here's an argsort implementation.
