@@ -1,0 +1,3 @@
+1. First generate a tree, prime the RNN for next step. Do this until stop token or something is sampled.
+2. VAE.
+3. Diffusion. Diffusion on sets. Multi-level RNN. Lower RNN generates tree, top RNN generates info for next tree (start state) or a stop condition.

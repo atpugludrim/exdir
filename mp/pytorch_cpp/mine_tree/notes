@@ -1,0 +1,11 @@
+1. Data format to graph  |
+2. graph to mptree       |--> Boost?
+3. mptree to canlab
+4. threading
+
+
+PyTorch extension lib can only read tensors, it cannot read pytorch_geometric.Data,
+but that'll be okay as long as I give individual tensors.
+
+Need to figure out how boost graph is created and how to convert the tensors to
+that format.
