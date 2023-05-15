@@ -98,6 +98,8 @@ void get_canonical_labels(const BGraph &G,
             std::tie(current_node, c_hops, new_node_id) = Q.front();
             //std::cout<<"Current_node: "<<current_node<<" c_hops: "<<c_hops<<" new_node_id: "<<new_node_id<<"\n";
             Q.pop_front();
+            if(c_hops >= n_hops)
+                break;
             boost::graph_traits<BGraph>::adjacency_iterator abegin, aend, jt;
             boost::tie(abegin, aend) = adjacent_vertices(current_node, G);
             for(jt=abegin; jt!=aend; jt++){
@@ -110,7 +112,7 @@ void get_canonical_labels(const BGraph &G,
                 //std::cout<<"Node"<<tree[node_ctr]->label<<" added to tree with edge<"<<tree[new_node_id]->label<<","<<tree[node_ctr]->label<<">"<<edge_label<<std::endl;
                 Q.push_back(std::make_tuple(*jt, c_hops + 1, node_ctr++));
             }
-        }while(c_hops + 1 < n_hops);
+        }while(c_hops < n_hops);
         Q.clear();
         std::string can = get_can_lab_tree(tree);
         canonical_labels.push_back(can);
