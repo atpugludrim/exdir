@@ -112,8 +112,9 @@ void get_canonical_labels(const BGraph &G,
                 //std::cout<<"Node"<<tree[node_ctr]->label<<" added to tree with edge<"<<tree[new_node_id]->label<<","<<tree[node_ctr]->label<<">"<<edge_label<<std::endl;
                 Q.push_back(std::make_tuple(*jt, c_hops + 1, node_ctr++));
             }
-        }while(c_hops < n_hops);
-        Q.clear();
+        }while(c_hops < n_hops);//this is working on my system for isolated nodes, but it wasn't working on hulk
+                                //add the condition && !Q.empty() to it to make sure the code exits (because hops won't increase)
+        Q.clear(); // also added the guard that clear the Q when !Q.empty() <- don't know if this helps with double free() but saw somewhere on stackexchange, so
         std::string can = get_can_lab_tree(tree);
         canonical_labels.push_back(can);
     }
