@@ -170,6 +170,10 @@ py::list canonical(py::list list, py::int_ n_hops){
      *
      * This part can then be multithreaded using <thread>.
      * Do check what pybind11 does with GIL.
+     * https://octavifs.com/post/pybind11-multithreading-parallellism-python/
+     * https://pybind11.readthedocs.io/en/stable/advanced/misc.html
+     * py::gil_scoped_release
+     *  m.def("cpp_fib_nogil", &fib, py::call_guard<py::gil_scoped_release>(), R"pbdoc( Give fibonnacci sequence value for a given number.)pbdoc");
      */
     std::vector<std::vector<std::string>> result_vector;
     std::vector<std::string> canonical_labels;
