@@ -1,0 +1,6 @@
+[This](https://stackoverflow.com/questions/1289881/using-gcc-to-produce-readable-assembly) says compile with `-g`, `-static` and `-fverbose-asm` flags and then use `objdump -drwC -S -Mintel` to do `objdump`. A comment further down tells that `-fverbose-asm` adds comments only to the `.o` file that is all removed at compile time to assembly (`gcc rosetta.c -c -static -fverbose-asm -S`). Use [godbolt.org](https://godbolt.org/) to simultaneously look at both code and it's assembly output. The script behind godbolt is open source (find links [here](https://stackoverflow.com/questions/38552116/how-to-remove-noise-from-gcc-clang-assembly-output), or [here](https://github.com/compiler-explorer/compiler-explorer)).
+Also, there's something [here](https://stackoverflow.com/questions/31405187/what-do-the-instructions-mov-edi-and-mov-rsi-do).
+
+[YouTube video](https://www.youtube.com/watch?v=vhyettT7sdA), [another YouTube video](https://www.youtube.com/watch?v=gh2RXE9BIN8), says to use [IDA](https://hex-rays.com/ida-free/) on [this](https://github.com/LowLevelLearning/babys-first-crackme).
+
+More disassembly [here](https://stackoverflow.com/questions/22769246/how-to-disassemble-one-single-function-using-objdump).
