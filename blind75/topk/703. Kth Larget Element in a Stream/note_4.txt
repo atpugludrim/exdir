@@ -1,0 +1,6 @@
+heapify has some issues. in test4 (which is huge, -9981 is a child of -9978),
+but that shouldn't happen since -9981 < -9978 and this is a min heap, meaning
+value of parent < value of child.
+
+
+I know what's wrong. You do not insert elements into heap like that. That's wrong.
