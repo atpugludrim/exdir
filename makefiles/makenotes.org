@@ -1,0 +1,121 @@
+(defun insertdate ()
+  (progn
+  (end-of-line)
+  (insert (format "\n\nWriting this at: %s" (current-time-string)))))
+(insertdate)
+
+Writing this at: Wed Jun 21 19:13:26 2023
+* What is this?
+These are notes and example implementations of Makefiles from the
+YouTube video [[https://www.youtube.com/watch?v=FfG-QqRK4cY][Makefiles, but in English]].
+* Syntax
+** Assignment operators
+#+BEGIN_SRC bash
+SRCS = main.c # Verbatim assignment
+SRCS := $(wildcard *.c) # Simple expansion
+SRCS != find . -name '*.c' # Shell output
+SRCS := $(shell find . -name '*.c')
+CC_FLAGS += -Wextra # Append to
+CFLAGS ?= $(CC_FLAGS) # Conditional assignment
+FOO := $(BAR)  # Comment
+# the last line above will include the hash followed by 'Comment' as part of the variable FOO.
+# that's the catch
+#+END_SRC
+Conditional assigment checks if CFLAGS isn't already defined, then you
+define it to be equal to whatever CC_FLAGS is.
+
+** Built in functions
+This is not comprehensive
+#+BEGIN_SRC bash
+$(SRCS:.c=.o) # Automatically list by changing extensions
+$(addprefix build/,$(OBJS)) # add build directory prefix to it
+$(if ..) $(or ..) $(and ..) # logic, but don't use a lot, build logic into software not build system
+$(foreach var,list,text)
+$(value (VARIABLE))
+$(shell ..)
+$(error ..)
+$(warning ..)
+$(info ..)
+#+END_SRC
+There's a lot more like:
+- text functions
+- filename functions
+- conditional functions
+- value functions
+- shell function
+- control functions
+
+* Rules
+- Shell commands emitted by Make to produce an output file
+- Use pattern matching on file types.
+
+#+BEGIN_SRC bash
+%.o: %.c
+    $(CC) -c $(CFLAGS) -o $@ $<
+%.o: %.cpp
+    $(CPP) -c $(CXXFLAGS) -o $@ $<
+#+END_SRC
+
+`$@` holds the target name and $< is the first pre-requisite.
+
+* Recipes
+- Define targets
+- First defined target is executed if none are specified
+- It's how you tell make about pre-requisites
+- Hierarchical structure
+- Allows to included optional shell commands to run
+- There are PHONY targets
+- Tells Make what rules to use if any
+
+#+BEGIN_SRC bash
+SRCS = main.c
+OBJS := $(SRCS:.c=.o)
+
+TARGET := foo
+
+.PHONY: all clean
+
+all: $(TARGET)
+
+foo: $(OBJS)
+    $(CC) -o $@ $^
+
+clean:
+    rm -f $(OBJS)
+#+END_SRC
+
+$^ is all the pre-requisites.
+
+* Automatic variables
+- $@ is the current target
+- $< is the first pre-requisite
+- $^ is all the pre-requisites
+- $? is list of all pre-requisites that have changed
+- $| order-only pre-requisites
+
+#+BEGIN_SRC bash
+SRCS = main.c
+OBJS := $(SRCS:.c=.o)
+DIR := build
+OBJS := $(addprefix $(DIR), $(OBJS))
+
+TARGET := foo
+
+.PHONY: clean
+
+$(DIR)/%.o: %.c
+  $(CC) -c $(CFLAGS) -o $@ $<
+
+$(TARGET): $(OBJS) | $(DIR)
+  $(CC) -o $@ $^
+
+$(DIR):
+  mkdir -p $@
+#+END_SRC
+
+* Automatic dependency
+Not required as of now. Ignoring, but know that this exists.
+
+* Supressing output
+Put an @ in front of a shell command, so it will supress output until
+make is run in a verbose mode.

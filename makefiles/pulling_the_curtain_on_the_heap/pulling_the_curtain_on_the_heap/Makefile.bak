@@ -1,0 +1,20 @@
+CC := gcc
+SRCS := $(wildcard *.c)
+OBJS := $(SRCS:.c=.o)
+BUILD := build
+OBJS := $(addprefix $(BUILD)/, $(OBJS))
+CFLAGS := -g
+TARGET := built
+
+.PHONY: clean
+
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) -o $@ $^
+
+$(BUILD)/%.o: %.c
+	@mkdir -p $(BUILD)
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+clean:
+	rm -rf $(BUILD)
+	rm $(TARGET)

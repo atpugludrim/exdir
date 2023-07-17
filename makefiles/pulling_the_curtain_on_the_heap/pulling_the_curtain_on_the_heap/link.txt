@@ -1,0 +1,6 @@
+https://www.youtube.com/watch?v=GIWeQ2I67rk
+Pulling the curtain on the heap by Jacob Sorber
+
+
+Install ruby2d and ruby:
+https://www.ruby2d.com/learn/linux/
